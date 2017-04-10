@@ -1,7 +1,8 @@
 <?php
-include 'dbconf.php'
 
 session_start();
+
+include 'dbconf.php'
 
 //Creat connection object
 $dispatchdb = new mysqli($dispatch_server, $dispatch_user, $dispatch_password);
