@@ -6,7 +6,7 @@ function getPeople() {
 	global $crime_user;
 	global $crime_password;
 
-	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname)
 
 	if($crimedb->connect_error) 
 	{
@@ -29,13 +29,13 @@ function getOfficers() {
 	global $crime_user;
 	global $crime_password;
 
-	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname)
 
 	if($crimedb->connect_error) 
 	{
 		die('Error connecting to the crime db.' . $crimedb->connect_error);
 	}
-	
+
 	$crimedb->query("USE crimedb");
 	$query = 'SELECT id, name FROM users';
 	$result = $crimedb->query($query, $db2);

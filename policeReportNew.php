@@ -8,7 +8,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $reportingPerson = $_POST['reportingPerson'];
 
-$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname)
 
 if($crimedb->connect_error) 
 {
