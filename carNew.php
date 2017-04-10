@@ -11,11 +11,11 @@ if (isset($_GET['license'])) {
 	}
 	$query = "INSERT INTO patrolCars(officer, license, inService)" . 
 	         "VALUES('$officer', '$license', $inService)";
-	$result = mysql_query($query);
+	$result = $dispatch->query();
 	if ($result) {
 		exit("Patrol car added.");
 	} else {
-		echo "Error: " . mysql_error();
+		echo "Error: " . $dispatchdb->error;
 	}
 }
 ?>

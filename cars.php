@@ -8,8 +8,8 @@ include 'head.php';
 <?php
 
 $query = "SELECT * FROM patrolCars";
-$result = mysql_query($query);
-while($line = mysql_fetch_array($result)) {
+$result = $dispatch->query($query);
+while($line = $result->fetch_array()) {
 	$notInService = abs($line['inService'] - 1);
 	$serviceText = ($line['inService'] == 0) ? 'No' : 'Yes';
 ?>

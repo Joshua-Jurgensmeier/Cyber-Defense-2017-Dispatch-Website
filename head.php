@@ -2,11 +2,6 @@
 include 'dbconf.php'
 
 session_start();
-$db2Connection = 'crime.team12.isucdc.com';
-/*
-$db = mysql_connect('', 'root', '') or die("Error connecting to MySQL.");
-mysql_select_db('dispatch') or die("Error selecting dispatch database.");
-*/
 
 //Creat connection object
 $dispatchdb = new mysqli($dispatch_server, $dispatch_user, $dispatch_password);

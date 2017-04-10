@@ -29,7 +29,13 @@ function getOfficers() {
 	global $crime_user;
 	global $crime_password;
 
-	$db2 = mysql_connect($db2Connection, 'remote', 'cdc') or die('Error connecting to the crime db.');
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+
+	if($crimedb->connect_error) 
+	{
+		die('Error connecting to the crime db.' . $crimedb->connect_error);
+	}
+	
 	$crimedb->query("USE crimedb");
 	$query = 'SELECT id, name FROM users';
 	$result = $crimedb->query($query, $db2);
