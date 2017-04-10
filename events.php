@@ -9,12 +9,12 @@ function getEvents() {
 		$user = $_SESSION['username'];
 		$query = "SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id WHERE patrolCars.officer = '$user'";
 	}
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	$out = [];
-	while ($line = mysql_fetch_assoc($result)) {
+	while ($line = $result->fetch_array()) {
 		array_push($out, $line);
 	}
-	mysql_free_result($result);
+	$result->free();
 	return $out;
 }
 
@@ -24,16 +24,16 @@ if(isset($_GET['active'])) {
 	$query = "UPDATE events SET active=$a WHERE id=$id";
 	$result = mysql_query($query);
 	if (!$result) {
-		echo mysql_error();
+		echo $dispatchdb->error;
 	}
 }
 
 if(isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$query = "DELETE FROM events WHERE id=$id";
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	if (!$result) {
-		echo mysql_error();
+		echo $dispatchdb->error;
 	}
 }
 
@@ -41,9 +41,9 @@ if(isset($_GET['assignedPatrolCar'])) {
 	$assignedPatrolCar = $_GET['assignedPatrolCar'];
 	$id = $_GET['id'];
 	$query = "UPDATE events SET assignedPatrolCar=$assignedPatrolCar WHERE id=$id";
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	if (!$result) {
-		echo mysql_error();
+		echo $dispatchdb->error;
 	}
 }
 ?>

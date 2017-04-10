@@ -1,9 +1,9 @@
 <?php
 function getPatrolCars() {
 	$query = "SELECT id, license FROM patrolCars";
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	$out = [];
-	while ($line = mysql_fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc()) {
 		array_push($out, $line);
 	}
 	return $out;

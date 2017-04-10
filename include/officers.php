@@ -1,9 +1,9 @@
 <?php
 function getOfficers() {
 	$query = "SELECT username FROM users WHERE patrolOfficer=1";
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	$out = [];
-	while ($line = mysql_fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc()) {
 		array_push($out, $line['username']);
 	}
 	return $out;

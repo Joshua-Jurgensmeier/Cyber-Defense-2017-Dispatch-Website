@@ -14,9 +14,9 @@ if (isset($_POST['title'])) {
 
 	$query = "INSERT INTO events(title, description, assignedPatrolCar, active, location) " .
 	         "VALUES('$title', '$description', $assignedPatrolCar, $active, '$location')";
-	$result = mysql_query($query);
+	$result = $dispatch->query($query);
 	if (!$query) {
-		echo mysql_error();
+		echo $dispatchdb->error;
 	} else { ?>
 		<script type="text/javascript">window.location.href = '/events.php';</script>
 	<?php

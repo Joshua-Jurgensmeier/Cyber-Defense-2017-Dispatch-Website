@@ -2,30 +2,42 @@
 include 'head.php';
 
 function getPeople() {
-	global $db2Connection;
-	$db2 = mysql_connect($db2Connection, 'remote', 'cdc') or die('Error connecting to the crime db.');
-	mysql_query("USE crimedb");
+	global $crime_server;
+	global $crime_user;
+	global $crime_password;
+
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+
+	if($crimedb->connect_error) 
+	{
+		die('Error connecting to the crime db.' . $crimedb->connect_error);
+	}
+
+	$crimedb->query("USE crimedb");
 	$query = 'SELECT id, name FROM people';
-	$result = mysql_query($query, $db2);
+	$result = $crimedb->query($query);
 	$out = [];
-	while ($line = mysql_fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc($result)) {
 		array_push($out, $line);
 	}
-	mysql_free_result($result);
+	$result->free();
 	return $out;
 }
 
 function getOfficers() {
-	global $db2Connection;
+	global $crime_server;
+	global $crime_user;
+	global $crime_password;
+
 	$db2 = mysql_connect($db2Connection, 'remote', 'cdc') or die('Error connecting to the crime db.');
-	mysql_query("USE crimedb");
+	$crimedb->query("USE crimedb");
 	$query = 'SELECT id, name FROM users';
-	$result = mysql_query($query, $db2);
+	$result = $crimedb->query($query, $db2);
 	$out = [];
-	while ($line = mysql_fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc($result)) {
 		array_push($out, $line);
 	}
-	mysql_free_result($result);
+	$result->free();
 	return $out;
 }
 

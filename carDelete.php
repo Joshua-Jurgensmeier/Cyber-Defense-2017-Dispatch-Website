@@ -3,7 +3,7 @@ include 'head.php';
 
 $id = $_GET['id'];
 $query = "DELETE FROM patrolCars WHERE id = $id";
-$result = mysql_query($query);
+$result = $connection->query($query);
 if($result) {
 ?>
 	Patrol car deleted. <a href="/cars.php">Back</a>
@@ -12,6 +12,6 @@ if($result) {
 ?>
 	Error deleting patrol car.
 <?php
-	echo mysql_error();
+	echo $dispatchdb->error;
 }
 include 'foot.php';
