@@ -1,7 +1,7 @@
 <?php
 function validateCreds($username, $password) {
 	$query = "SELECT * FROM users WHERE username='$username'";
-	$result = $dispatch->query($query);
+	$result = $dispatchdb->query($query);
 	$data = $result->fetch_array();
 
 	$_SESSION['username'] = $data['username'];

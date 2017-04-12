@@ -5,7 +5,7 @@ $car = $_GET['id'];
 $new = $_GET['new'];
 
 $query = "UPDATE patrolCars SET inService = $new WHERE id = $car";
-$result = $dispatch->query($query);
+$result = $dispatchdb->query($query);
 ?>
 Service updated.  <a href="/cars.php">Back to table</a>.
 <?php

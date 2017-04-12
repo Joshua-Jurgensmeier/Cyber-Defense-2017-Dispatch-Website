@@ -14,7 +14,7 @@ if (isset($_POST['title'])) {
 
 	$query = "INSERT INTO events(title, description, assignedPatrolCar, active, location) " .
 	         "VALUES('$title', '$description', $assignedPatrolCar, $active, '$location')";
-	$result = $dispatch->query($query);
+	$result = $dispatchdb->query($query);
 	if (!$query) {
 		echo $dispatchdb->error;
 	} else { ?>

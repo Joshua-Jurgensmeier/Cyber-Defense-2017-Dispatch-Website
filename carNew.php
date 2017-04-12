@@ -11,7 +11,7 @@ if (isset($_GET['license'])) {
 	}
 	$query = "INSERT INTO patrolCars(officer, license, inService)" . 
 	         "VALUES('$officer', '$license', $inService)";
-	$result = $dispatch->query();
+	$result = $dispatchdb->query();
 	if ($result) {
 		exit("Patrol car added.");
 	} else {

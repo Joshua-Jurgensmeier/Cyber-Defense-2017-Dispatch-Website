@@ -9,7 +9,7 @@ function getEvents() {
 		$user = $_SESSION['username'];
 		$query = "SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id WHERE patrolCars.officer = '$user'";
 	}
-	$result = $dispatch->query($query);
+	$result = $dispatchdb->query($query);
 	$out = [];
 	while ($line = $result->fetch_array()) {
 		array_push($out, $line);
@@ -31,7 +31,7 @@ if(isset($_GET['active'])) {
 if(isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$query = "DELETE FROM events WHERE id=$id";
-	$result = $dispatch->query($query);
+	$result = $dispatchdb->query($query);
 	if (!$result) {
 		echo $dispatchdb->error;
 	}
@@ -41,7 +41,7 @@ if(isset($_GET['assignedPatrolCar'])) {
 	$assignedPatrolCar = $_GET['assignedPatrolCar'];
 	$id = $_GET['id'];
 	$query = "UPDATE events SET assignedPatrolCar=$assignedPatrolCar WHERE id=$id";
-	$result = $dispatch->query($query);
+	$result = $dispatchdb->query($query);
 	if (!$result) {
 		echo $dispatchdb->error;
 	}
