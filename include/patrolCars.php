@@ -1,5 +1,6 @@
 <?php
 function getPatrolCars() {
+	global $dispatchdb;
 	$query = "SELECT id, license FROM patrolCars";
 	$result = $dispatchdb->query($query);
 	$out = [];

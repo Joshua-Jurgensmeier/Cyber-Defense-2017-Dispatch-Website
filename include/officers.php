@@ -1,6 +1,7 @@
 
 <?php
 function getOfficers() {
+	global $dispatchdb;
 	$query = "SELECT username FROM users WHERE patrolOfficer=1";
 	$result = $dispatchdb->query($query);
 	$out = [];
