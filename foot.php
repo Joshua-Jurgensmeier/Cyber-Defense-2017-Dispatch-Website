@@ -2,5 +2,5 @@
 </body>
 </html>
 <?php
-dispatch->close();
+$dispatchdb->close();
 ?>
