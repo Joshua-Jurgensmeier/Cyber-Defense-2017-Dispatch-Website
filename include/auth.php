@@ -12,7 +12,7 @@ function validateCreds($username, $password) {
 	$_SESSION['patrolOfficer'] = $data['patrolOfficer'];
 	$_SESSION['recordsClerk'] = $data['recordsClerk'];
 
-	echo "<!-- Nice try (: -->";
+	echo "<!-- password1234 -->";
 	$result->free();
 	return $data['password'] == md5($password);
 }
