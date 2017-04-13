@@ -4,9 +4,9 @@ function validateCreds($username, $password) {
 
 	$query = $dispatchdb->prepare("SELECT * FROM users WHERE username=?");
 
-	$query->bind_param('s', $username)
+	$query->bind_param('s', $username);
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 	
