@@ -5,6 +5,12 @@ include 'include/officers.php';
 if (isset($_GET['license'])) {
 	$officer = $_GET['officer'];
 	$license = $_GET['license'];
+	//sanitize license here
+
+	if(strlen($_GET['license']) > 8) {
+		exit("Error: Incorrect input.");
+	}
+
 	$inService = 0;
 	if (isset($_GET['inService']) && $_GET['inService'] == 'on') {
 		$inService = 1;
@@ -27,7 +33,7 @@ if (isset($_GET['license'])) {
 
 <h2>New Patrol Car</h2>
 <form method="get" action="/carNew.php">
-	<label for='license'>License plate:</label><br/>
+	<label for='license'>License plate (in form xxx-xxx):</label><br/>
 	<input type='text' name='license' id='license'/><br/>
 	<br/>
 	<label for='officer'>Officer:</label><br/>
