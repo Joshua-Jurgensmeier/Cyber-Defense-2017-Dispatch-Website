@@ -80,7 +80,7 @@ if(isset($_GET['assignedPatrolCar'])) {
 	
 	$query->bind_param('ii', $assignedPatrolCar, $id);
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 
