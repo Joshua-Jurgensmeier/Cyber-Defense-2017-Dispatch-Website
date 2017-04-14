@@ -22,7 +22,7 @@ $query = $crimedb->prepare('INSERT INTO police_report(reporting_officer, report_
 
 $query->bind_param('issssi', $reportingOfficer, $reportTime, $offenseTime, $title, $description, $reportingPerson);
 
-$query->excecute();
+$query->execute();
 
 $result = $query->get_result();
 

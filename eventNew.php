@@ -17,7 +17,7 @@ if (isset($_POST['title'])) {
 
 	$query->bind_param(ssiis, $title, $description, $assignedPatrolCar, $active, $location);
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 

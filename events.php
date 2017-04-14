@@ -17,7 +17,7 @@ function getEvents() {
 		$query->bind_param('s', $user);
 	}
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 
@@ -40,7 +40,7 @@ if(isset($_GET['active'])) {
 
 	$query->bind_param('ii',$a, $id);
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 
@@ -60,7 +60,7 @@ if(isset($_GET['delete'])) {
 
 	$query->bind_param(i, $id);
 
-	$query->excecute();
+	$query->execute();
 
 	$result = $query->get_result();
 
