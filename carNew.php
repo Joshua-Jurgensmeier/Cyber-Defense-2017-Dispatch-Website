@@ -18,6 +18,8 @@ if (isset($_GET['license'])) {
 
 	$result = $query->get_result();
 
+	echo $result;
+
 	if ($result) {
 		exit("Patrol car added.");
 	} else {
@@ -25,7 +27,7 @@ if (isset($_GET['license'])) {
 	}
 }
 
-$query->free_result();
+$result->free();
 $query->close();
 
 ?>
