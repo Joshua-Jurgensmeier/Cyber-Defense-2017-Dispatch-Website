@@ -9,9 +9,13 @@ if (isset($_GET['license'])) {
 	if (isset($_GET['inService']) && $_GET['inService'] == 'on') {
 		$inService = 1;
 	}
-	$query = "INSERT INTO patrolCars(officer, license, inService)" . 
-	         "VALUES('$officer', '$license', $inService)";
-	$result = $dispatchdb->query();
+	$query = $dispatchdb->prepare("INSERT INTO patrolCars(officer, license, inService)" . 
+	         "VALUES(?, ?, ?)");
+
+	$query->bind_param('ssi', $officer, $license, $inService);
+
+	$result = $query->get_result();
+
 	if ($result) {
 		exit("Patrol car added.");
 	} else {
@@ -37,4 +41,8 @@ if (isset($_GET['license'])) {
 	<input type="submit" value='Submit'>
 </form>
 <?php
+
+$query->free_result();
+$query->close();
+
 include 'foot.php';

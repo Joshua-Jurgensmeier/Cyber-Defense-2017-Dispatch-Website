@@ -3,6 +3,9 @@ include 'head.php';
 include 'include/patrolCars.php';
 
 function getEvents() {
+
+	global $dispatchdb;
+
 	if ($_SESSION['dispatcher']) {
 		$query = "SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id";
 	} else {

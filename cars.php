@@ -8,7 +8,9 @@ include 'head.php';
 <?php
 
 $query = "SELECT * FROM patrolCars";
+
 $result = $dispatchdb->query($query);
+
 while($line = $result->fetch_array()) {
 	$notInService = abs($line['inService'] - 1);
 	$serviceText = ($line['inService'] == 0) ? 'No' : 'Yes';
