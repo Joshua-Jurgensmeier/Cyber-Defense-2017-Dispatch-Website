@@ -14,6 +14,8 @@ if (isset($_GET['license'])) {
 
 	$query->bind_param('ssi', $officer, $license, $inService);
 
+	$query->execute();
+
 	$result = $query->get_result();
 
 	if ($result) {
@@ -22,6 +24,10 @@ if (isset($_GET['license'])) {
 		echo "Error: " . $dispatchdb->error;
 	}
 }
+
+$query->free_result();
+$query->close();
+
 ?>
 
 <h2>New Patrol Car</h2>
@@ -42,7 +48,5 @@ if (isset($_GET['license'])) {
 </form>
 <?php
 
-$query->free_result();
-$query->close();
 
 include 'foot.php';

@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 $query = $dispatchdb->prepare("DELETE FROM patrolCars WHERE id = ?");
 
-$query->bind_param(i, $id);
+$query->bind_param('i', $id);
 
 $query->execute();
 
