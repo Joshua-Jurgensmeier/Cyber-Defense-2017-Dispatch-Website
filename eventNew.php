@@ -25,8 +25,6 @@ if (isset($_POST['title'])) {
 	<?php
 	}
 }
-$query->close();
-
 ?>
 <h2>New Event</h2>
 
@@ -54,6 +52,6 @@ $query->close();
 <?php
 
 
-
+$query->close();
 
 include 'foot.php';
