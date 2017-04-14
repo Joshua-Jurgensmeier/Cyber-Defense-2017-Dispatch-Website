@@ -18,10 +18,11 @@ if (isset($_GET['license'])) {
 		exit("Patrol car added.");
 	} else {
 		echo "Error: " . $dispatchdb->error;
+		$query->close();
 	}
 }
 
-$query->close();
+
 
 ?>
 
