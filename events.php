@@ -7,47 +7,90 @@ function getEvents() {
 	global $dispatchdb;
 
 	if ($_SESSION['dispatcher']) {
-		$query = "SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id";
+		$query = $dispatchdb->prepare("SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id");
+
+
 	} else {
 		$user = $_SESSION['username'];
-		$query = "SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id WHERE patrolCars.officer = '$user'";
+		$query = $dispatchdb->prepare("SELECT events.id, description, title, active, location, license FROM events LEFT JOIN patrolCars ON events.assignedPatrolCar = patrolCars.id WHERE patrolCars.officer = ?");
+
+		$query->bind_param('s', $user);
 	}
-	$result = $dispatchdb->query($query);
+
+	$query->excecute();
+
+	$result = $query->get_result();
+
 	$out = [];
 	while ($line = $result->fetch_array()) {
 		array_push($out, $line);
 	}
-	$result->free();
+
+	$query->free_result();
+
+	$query->close();
+
 	return $out;
 }
 
 if(isset($_GET['active'])) {
 	$a = $_GET['active'];
 	$id = $_GET['id'];
-	$query = "UPDATE events SET active=$a WHERE id=$id";
-	$result = mysql_query($query);
+	$query = $dispatchdb->prepare("UPDATE events SET active=? WHERE id=?");
+
+	$query->bind_param('ii',$a, $id);
+
+	$query->excecute();
+
+	$result = $query->get_result();
+
 	if (!$result) {
 		echo $dispatchdb->error;
 	}
+
+	$query->free_result();
+
+	$query->close();
+
 }
 
 if(isset($_GET['delete'])) {
 	$id = $_GET['id'];
-	$query = "DELETE FROM events WHERE id=$id";
-	$result = $dispatchdb->query($query);
+	$query = $dispatchdb->prepare("DELETE FROM events WHERE id=?");
+
+	$query->bind_param(i, $id);
+
+	$query->excecute();
+
+	$result = $query->get_result();
+
 	if (!$result) {
 		echo $dispatchdb->error;
 	}
+
+	$query->free_result();
+
+	$query->close();
 }
 
 if(isset($_GET['assignedPatrolCar'])) {
 	$assignedPatrolCar = $_GET['assignedPatrolCar'];
 	$id = $_GET['id'];
-	$query = "UPDATE events SET assignedPatrolCar=$assignedPatrolCar WHERE id=$id";
-	$result = $dispatchdb->query($query);
+	$query = $dispatchdb->prepare("UPDATE events SET assignedPatrolCar=? WHERE id=?");
+	
+	$query->bind_param('ii', $assignedPatrolCar, $id);
+
+	$query->excecute();
+
+	$result = $query->get_result();
+
 	if (!$result) {
 		echo $dispatchdb->error;
 	}
+
+	$query->free_result();
+
+	$query->close();
 }
 ?>
 <script type="text/javascript">

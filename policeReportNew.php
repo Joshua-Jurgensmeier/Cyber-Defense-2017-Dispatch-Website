@@ -8,7 +8,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $reportingPerson = $_POST['reportingPerson'];
 
-$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname)
+$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname);
 
 if($crimedb->connect_error) 
 {
@@ -17,8 +17,10 @@ if($crimedb->connect_error)
 
 $crimedb->query("USE crimedb");
 
-$query = 'INSERT INTO police_report(reporting_officer, report_time, offense_time, title, description, reporting_person) ' .
-         "VALUES($reportingOfficer, '$reportTime', '$offenseTime', '$title', '$description', $reportingPerson)";
+$query = $crimedb->prepare('INSERT INTO police_report(reporting_officer, report_time, offense_time, title, description, reporting_person) ' .
+         "VALUES(?, ?, ?, ?, ?, ?)");
+
+$query->bind_param('issssi', $reportingOfficer, $reportTime, $offenseTime, $title, $description, $reportingPerson);
 
 $result = $crimedb->query($query);
 
