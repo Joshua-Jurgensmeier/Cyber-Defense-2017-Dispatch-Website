@@ -19,7 +19,7 @@ function validateCreds($username, $password) {
 	$_SESSION['patrolOfficer'] = $data['patrolOfficer'];
 	$_SESSION['recordsClerk'] = $data['recordsClerk'];
 
-	echo "<!-- password1234 -->";
+	echo "<!-- correcthorsebatterystaple -->";
 	
 	$query->free_result();
 	$query->close();

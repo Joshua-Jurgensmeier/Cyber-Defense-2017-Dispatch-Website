@@ -18,7 +18,7 @@ function getPeople() {
 	$query = 'SELECT id, name FROM people';
 	$result = $crimedb->query($query);
 	$out = [];
-	while ($line = $result->fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc()) {
 		array_push($out, $line);
 	}
 	$result->free();
@@ -41,7 +41,7 @@ function getOfficers() {
 	$query = 'SELECT id, name FROM users';
 	$result = $crimedb->query($query);
 	$out = [];
-	while ($line = $result->fetch_assoc($result)) {
+	while ($line = $result->fetch_assoc()) {
 		array_push($out, $line);
 	}
 	$result->free();
