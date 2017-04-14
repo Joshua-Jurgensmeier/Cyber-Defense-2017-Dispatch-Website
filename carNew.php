@@ -21,7 +21,7 @@ if (isset($_GET['license'])) {
 	}
 }
 
-$query->close();
+
 
 ?>
 
@@ -43,5 +43,6 @@ $query->close();
 </form>
 <?php
 
+$query->close();
 
 include 'foot.php';
