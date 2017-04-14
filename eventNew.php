@@ -17,11 +17,8 @@ if (isset($_POST['title'])) {
 
 	$query->bind_param(ssiis, $title, $description, $assignedPatrolCar, $active, $location);
 
-	$query->execute();
 
-	$result = $query->get_result();
-
-	if (!$query) {
+	if (!($query->execute())) {
 		echo $dispatchdb->error;
 	} else { ?>
 		<script type="text/javascript">window.location.href = '/events.php';</script>
@@ -54,7 +51,7 @@ if (isset($_POST['title'])) {
 </form>
 <?php
 
-$query->free_result();
+
 $query->close();
 
 include 'foot.php';

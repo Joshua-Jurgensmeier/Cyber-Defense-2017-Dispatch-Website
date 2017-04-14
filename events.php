@@ -40,15 +40,10 @@ if(isset($_GET['active'])) {
 
 	$query->bind_param('ii',$a, $id);
 
-	$query->execute();
 
-	$result = $query->get_result();
-
-	if (!$result) {
+	if (!($query->execute())) {
 		echo $dispatchdb->error;
 	}
-
-	$query->free_result();
 
 	$query->close();
 
@@ -60,15 +55,12 @@ if(isset($_GET['delete'])) {
 
 	$query->bind_param(i, $id);
 
-	$query->execute();
+	
 
-	$result = $query->get_result();
-
-	if (!$result) {
+	if (!($query->execute())) {
 		echo $dispatchdb->error;
 	}
 
-	$query->free_result();
 
 	$query->close();
 }
@@ -80,15 +72,12 @@ if(isset($_GET['assignedPatrolCar'])) {
 	
 	$query->bind_param('ii', $assignedPatrolCar, $id);
 
-	$query->execute();
+	
 
-	$result = $query->get_result();
 
-	if (!$result) {
+	if (!($query->execute())) {
 		echo $dispatchdb->error;
 	}
-
-	$query->free_result();
 
 	$query->close();
 }

@@ -22,18 +22,13 @@ $query = $crimedb->prepare('INSERT INTO police_report(reporting_officer, report_
 
 $query->bind_param('issssi', $reportingOfficer, $reportTime, $offenseTime, $title, $description, $reportingPerson);
 
-$query->execute();
 
-$result = $query->get_result();
-
-if ($result == true) {
+if ($query->execute()) {
 ?>
 	Report saved on the Crime DB.
 <?php } else { ?>
 	Problem saving the report: <?php echo 	$crimedb->error;
 } 
-
-$query->free_result();
 
 $query->close();
 

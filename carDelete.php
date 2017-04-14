@@ -7,11 +7,7 @@ $query = $dispatchdb->prepare("DELETE FROM patrolCars WHERE id = ?");
 
 $query->bind_param('i', $id);
 
-$query->execute();
-
-$result = $query->get_result();
-
-if($result) {
+if( $query->execute() ) {
 ?>
 	Patrol car deleted. <a href="/cars.php">Back</a>
 <?php
@@ -21,8 +17,6 @@ if($result) {
 <?php
 	echo $dispatchdb->error;
 }
-
-$query->free_result();
 
 $query->close();
 

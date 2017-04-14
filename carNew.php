@@ -14,20 +14,13 @@ if (isset($_GET['license'])) {
 
 	$query->bind_param('ssi', $officer, $license, $inService);
 
-	$query->execute();
-
-	$result = $query->get_result();
-
-	echo $result;
-
-	if ($result) {
+	if ($query->execute()) {
 		exit("Patrol car added.");
 	} else {
 		echo "Error: " . $dispatchdb->error;
 	}
 }
 
-$result->free();
 $query->close();
 
 ?>
