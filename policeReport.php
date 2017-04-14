@@ -6,7 +6,7 @@ function getPeople() {
 	global $crime_user;
 	global $crime_password;
 
-	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password);
 
 	if($crimedb->connect_error) 
 	{
@@ -30,7 +30,7 @@ function getOfficers() {
 	global $crime_user;
 	global $crime_password;
 
-	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password)
+	$crimedb = new mysqli ($crime_server, $crime_user, $crime_password);
 
 	if($crimedb->connect_error) 
 	{

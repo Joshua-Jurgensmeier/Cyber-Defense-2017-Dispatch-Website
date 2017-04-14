@@ -8,7 +8,7 @@ $title = $_POST['title'];
 $description = $_POST['description'];
 $reportingPerson = $_POST['reportingPerson'];
 
-$crimedb = new mysqli ($crime_server, $crime_user, $crime_password, $crime_dbname);
+$crimedb = new mysqli ($crime_server, $crime_user, $crime_password);
 
 if($crimedb->connect_error) 
 {
@@ -22,14 +22,22 @@ $query = $crimedb->prepare('INSERT INTO police_report(reporting_officer, report_
 
 $query->bind_param('issssi', $reportingOfficer, $reportTime, $offenseTime, $title, $description, $reportingPerson);
 
-$result = $crimedb->query($query);
+$query->excecute();
+
+$result = $query->get_result();
 
 if ($result == true) {
 ?>
 	Report saved on the Crime DB.
 <?php } else { ?>
 	Problem saving the report: <?php echo 	$crimedb->error;
-} ?>
+} 
+
+$query->free_result();
+
+$query->close();
+
+?>
 
 <?php
 include 'foot.php';

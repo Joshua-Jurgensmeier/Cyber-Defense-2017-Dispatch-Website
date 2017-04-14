@@ -15,9 +15,12 @@ if (isset($_POST['title'])) {
 	$query = $dispatchdb->prepare("INSERT INTO events(title, description, assignedPatrolCar, active, location) " .
 	         "VALUES('$title', '$description', $assignedPatrolCar, $active, '$location')");
 
+	$query->bind_param(ssiis, $title, $description, $assignedPatrolCar, $active, $location);
 
+	$query->excecute();
 
-	$result = $dispatchdb->query($query);
+	$result = $query->get_result();
+
 	if (!$query) {
 		echo $dispatchdb->error;
 	} else { ?>
@@ -50,4 +53,8 @@ if (isset($_POST['title'])) {
 	<input type='submit' value='Submit' />
 </form>
 <?php
+
+$query->free_result();
+$query->close();
+
 include 'foot.php';
