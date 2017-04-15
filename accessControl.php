@@ -1,5 +1,10 @@
 <?php
 
+function fix($inputStr)
+{
+	return explode('?', $inputStr, $limit=2)[0];
+}
+
 $dispatcherList = array("/cars.php", "/events.php", "/carMarkInService.php", "/eventNew.php");
 $officerList = array("/events.php", "/patrol/", "/patrol.php", "/upload");
 $clerkList = array("/cars.php", "/patrol/", "/policeReport.php", "/policeReportNew.php", "/carNew.php");
@@ -15,9 +20,9 @@ if(
 			
 			and 
 		( 
-			($_SESSION['dispatcher'] and in_array($_SERVER['REQUEST_URI'], $dispatcherList)) or 
-			($_SESSION['patrolOfficer'] and in_array($_SERVER['REQUEST_URI'], $officerList)) or 
-			($_SESSION['recordsClerk'] and in_array($_SERVER['REQUEST_URI'], $clerkList))
+			($_SESSION['dispatcher'] and in_array(fix($_SERVER['REQUEST_URI']), $dispatcherList)) or 
+			($_SESSION['patrolOfficer'] and in_array(fix($_SERVER['REQUEST_URI']), $officerList)) or 
+			($_SESSION['recordsClerk'] and in_array(fix($_SERVER['REQUEST_URI']), $clerkList))
 		)
 	)
 )
