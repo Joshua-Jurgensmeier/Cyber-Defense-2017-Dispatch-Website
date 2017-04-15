@@ -12,6 +12,7 @@ if (isset($_POST['title'])) {
 	}
 	$location = $_POST['location'];
 
+
 	$query = $dispatchdb->prepare("INSERT INTO events(title, description, assignedPatrolCar, active, location) " .
 	         "VALUES('$title', '$description', $assignedPatrolCar, $active, '$location')");
 

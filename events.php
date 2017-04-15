@@ -30,6 +30,8 @@ function getEvents() {
 
 	$query->close();
 
+	echo $out;
+
 	return $out;
 }
 

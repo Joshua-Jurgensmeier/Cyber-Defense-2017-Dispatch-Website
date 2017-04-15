@@ -12,8 +12,6 @@ function validateCreds($username, $password) {
 	
 	$data = $result->fetch_array();
 
-	echo $data['username'];
-
 	$_SESSION['username'] = $data['username'];
 	$_SESSION['dispatcher'] = $data['dispatcher'];
 	$_SESSION['patrolOfficer'] = $data['patrolOfficer'];
