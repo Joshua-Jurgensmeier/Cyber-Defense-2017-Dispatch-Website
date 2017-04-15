@@ -3,7 +3,7 @@
 $dispatcherList = array("/cars.php", "/events.php", "/carMarkInService.php", "/eventNew.php");
 $officerList = array("/events.php", "/patrol/", "/patrol.php", "/upload");
 $clerkList = array("/cars.php", "/patrol/", "/policeReport.php", "/policeReportNew.php", "/carNew.php");
-$anyoneList = array("/login.php", "/logout.php", "/index.php", "/403.php");
+$anyoneList = array("/login.php", "/logout.php", "/index.php", "/403.php", "/");
 
 if(
 	in_array($_SERVER['REQUEST_URI'], $anyoneList) 
