@@ -21,6 +21,12 @@ function getPeople() {
 	while ($line = $result->fetch_assoc()) {
 		array_push($out, $line);
 	}
+
+	foreach($out as $person)
+	{
+		$event['name'] = htmlentities($event['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+	}
+
 	$result->free();
 	return $out;
 }

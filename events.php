@@ -30,11 +30,14 @@ function getEvents() {
 
 	$query->close();
 
+	//Sanitize text fields
 	foreach($out as $event)
 	{
-		echo $event['description'];
-		echo $event['title'];
-		echo $event['location'];
+		$event['description'] = htmlentities($event['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+		$event['title'] = htmlentities($event['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+		$event['location'] = htmlentities($event['location'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 	}
 
 	return $out;

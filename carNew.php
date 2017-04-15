@@ -7,11 +7,11 @@ if (isset($_GET['license'])) {
 	$license = $_GET['license'];
 	//sanitize license here
 
-	if(strlen($_GET['license']) != 7 | substr($_GET['license'], 3, 1) != "-") {
+	if(strlen($license) != 7 | substr($license, 3, 1) != "-") {
 		exit("Error: Incorrect input.");
 	}
 	else {
-		htmlspecialchars($_GET['license'])
+		$license = htmlspecialchars($license, ENT_QUOTES);
 	}
 
 	$inService = 0;
