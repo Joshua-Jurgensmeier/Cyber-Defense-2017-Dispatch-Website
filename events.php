@@ -132,7 +132,7 @@ if(isset($_GET['assignedPatrolCar'])) {
 					<a href='/events.php?id=<?php echo $event['id']; ?>&active=0'>Yes</a>
 				<?php } ?>
 			</td>
-			<td><?php echo $event['location']; ?></td>
+			<td><?php echo htmlentities($event['location'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></td>
 			<td>
 				<?php if($_SESSION['dispatcher']) { ?>
 					<a href="/events.php?delete=true&id=<?php echo $event['id']; ?>">Delete</a>
