@@ -22,11 +22,6 @@ function getPeople() {
 		array_push($out, $line);
 	}
 
-	foreach($out as $person)
-	{
-		$event['name'] = htmlentities($event['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-	}
-
 	$result->free();
 	return $out;
 }
@@ -82,7 +77,7 @@ function getOfficers() {
 	<?php
 	foreach(scandir("/var/www/dispatch/patrol/") as &$dir) {
 	?>
-		<option value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/patrol/<?php echo $dir; ?>"><?php echo $dir; ?></option>
+		<option value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/patrol/<?php echo $dir; ?>"><?php echo htmlentities($dir, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></option>
 	<?php
 	}
 	?>
@@ -93,7 +88,7 @@ function getOfficers() {
 	<?php
 	foreach(getPeople() as &$person) {
 	?>
-		<option value="<?php echo $person['id']; ?>"><?php echo $person['name']; ?></option>
+		<option value="<?php echo $person['id']; ?>"><?php echo htmlentities($person['name'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></option>
 	<?php
 	}
 	?>
