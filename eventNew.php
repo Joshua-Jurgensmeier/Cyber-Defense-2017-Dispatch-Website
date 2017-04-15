@@ -14,7 +14,7 @@ if (isset($_POST['title'])) {
 
 
 	$query = $dispatchdb->prepare("INSERT INTO events(title, description, assignedPatrolCar, active, location) " .
-	         "VALUES('$title', '$description', $assignedPatrolCar, $active, '$location')");
+	         "VALUES(?, ?, ?, ?, ?)");
 
 	$query->bind_param('ssiis', $title, $description, $assignedPatrolCar, $active, $location);
 
