@@ -30,7 +30,7 @@ function getEvents() {
 
 	$query->close();
 
-	//Sanitize text fields
+	/*Sanitize text fields
 	foreach($out as $event)
 	{
 		$event['description'] = htmlentities($event['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
@@ -38,7 +38,7 @@ function getEvents() {
 		$event['title'] = htmlentities($event['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
 		$event['location'] = htmlentities($event['location'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-	}
+	}*/
 
 	return $out;
 }
@@ -114,8 +114,8 @@ if(isset($_GET['assignedPatrolCar'])) {
 	foreach(getEvents() as &$event) {
 	?>
 		<tr>
-			<td><?php echo $event['title']; ?></td>
-			<td><?php echo $event['description']; ?></td>
+			<td><?php echo htmlentities($event['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></td>
+			<td><?php echo htmlentities($event['description'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></td>
 			<td id="license<?php echo $event['id']; ?>">
 				<a href="javascript:setLicense(<?php echo $event['id']; ?>, '<?php echo $event['license']; ?>');">
 					<?php if ($event['license'] == "") { ?>
