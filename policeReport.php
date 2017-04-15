@@ -77,7 +77,7 @@ function getOfficers() {
 	<?php
 	foreach(scandir("/var/www/dispatch/patrol/") as &$dir) {
 	?>
-		<option value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/patrol/<?php echo $dir; ?>"><?php echo htmlentities($dir, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></option>
+		<option value="http://<?php echo htmlentities($_SERVER['HTTP_HOST'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?>/patrol/<?php echo htmlentities($dir, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?>"><?php echo htmlentities($dir, ENT_QUOTES | ENT_HTML5, 'UTF-8'); ?></option>
 	<?php
 	}
 	?>

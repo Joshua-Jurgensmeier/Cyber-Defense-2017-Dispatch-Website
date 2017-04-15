@@ -2,6 +2,8 @@
 
 session_start();
 
+include 'accessControl.php';
+
 include 'dbconf.php';
 
 //Creat connection object
