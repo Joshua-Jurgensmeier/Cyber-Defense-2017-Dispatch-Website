@@ -30,12 +30,11 @@ function getEvents() {
 
 	$query->close();
 
-	foreach($out as $x)
+	foreach($out as $event)
 	{
-		foreach($x as $y)
-		{
-			echo $y;
-		}
+		echo $event['description'];
+		echo $event['title'];
+		echo $event['location'];
 	}
 
 	return $out;
