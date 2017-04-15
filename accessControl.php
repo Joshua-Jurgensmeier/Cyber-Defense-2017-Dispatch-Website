@@ -11,7 +11,7 @@ if((!isset($_SESSION['dispatcher'])) or
 	($_SESSION['recordsClerk'] and $in_array($_SERVER['REQUEST_URI'], $clerkList)) or
 	($in_array($_SERVER['REQUEST_URI'], $anyoneList)))))
 {
-	header('Location: http://team12.isucdc.com/403.php');
+	header('Location: http://www.team12.isucdc.com/403.php');
 	exit("Access denied");
 }
 
