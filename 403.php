@@ -1,7 +1,7 @@
 <?php include "head.php"; 
 
 echo in_array($_SERVER['REQUEST_URI'], $anyoneList);
-echo isset($_SESSION[]);
+echo isset($_SESSION['authenticated']);
 
 ?>
 <h2>403: Access Denied</h2>
