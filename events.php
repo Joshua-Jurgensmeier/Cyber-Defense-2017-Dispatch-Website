@@ -32,7 +32,10 @@ function getEvents() {
 
 	foreach($out as $x)
 	{
-		echo $x;
+		foreach($x as $y)
+		{
+			echo $y;
+		}
 	}
 
 	return $out;
