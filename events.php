@@ -30,7 +30,10 @@ function getEvents() {
 
 	$query->close();
 
-	echo $out;
+	foreach($out as $x)
+	{
+		echo $x;
+	}
 
 	return $out;
 }
