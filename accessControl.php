@@ -12,7 +12,7 @@ $anyoneList = array("/login.php", "/logout.php", "/index.php", "/403.php", "/");
 
 if
 (
-	in_array($_SERVER['REQUEST_URI'], $anyoneList) 
+	in_array(fix($_SERVER['REQUEST_URI']), $anyoneList) 
 
 	or 
 	
