@@ -10,7 +10,8 @@ $officerList = array("/events.php", "/patrol/", "/patrol.php", "/upload");
 $clerkList = array("/cars.php", "/patrol/", "/policeReport.php", "/policeReportNew.php", "/carNew.php");
 $anyoneList = array("/login.php", "/logout.php", "/index.php", "/403.php", "/");
 
-if(
+if
+(
 	in_array($_SERVER['REQUEST_URI'], $anyoneList) 
 
 	or 
@@ -20,8 +21,10 @@ if(
 			
 			and 
 		( 
-			($_SESSION['dispatcher'] and in_array(fix($_SERVER['REQUEST_URI']), $dispatcherList)) or 
-			($_SESSION['patrolOfficer'] and in_array(fix($_SERVER['REQUEST_URI']), $officerList)) or 
+			($_SESSION['dispatcher'] and in_array(fix($_SERVER['REQUEST_URI']), $dispatcherList)) 
+			or 
+			($_SESSION['patrolOfficer'] and in_array(fix($_SERVER['REQUEST_URI']), $officerList)) 
+			or 
 			($_SESSION['recordsClerk'] and in_array(fix($_SERVER['REQUEST_URI']), $clerkList))
 		)
 	)
@@ -31,6 +34,9 @@ if(
 
 else 
 {
+	error_log(print_r(fix($_SERVER['REQUEST_URI']), TRUE)); 
+	error_log("auth isset: " . isset($_SESSION['authenticated']));
+
 	header('Location: http://www.team12.isucdc.com/403.php');
 	exit("Access denied");
 }
