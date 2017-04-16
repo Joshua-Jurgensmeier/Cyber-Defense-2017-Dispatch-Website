@@ -24,6 +24,7 @@ if (isset($_POST['title'])) {
 	} else { ?>
 		<script type="text/javascript">window.location.href = '/events.php';</script>
 	<?php
+		$query->close();
 	}
 }
 ?>
@@ -52,7 +53,5 @@ if (isset($_POST['title'])) {
 </form>
 <?php
 
-
-$query->close();
 
 include 'foot.php';

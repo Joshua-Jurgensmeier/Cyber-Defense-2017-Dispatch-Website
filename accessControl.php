@@ -1,8 +1,8 @@
 <?php
 
-function fix($inputStr)
+function get_uri()
 {
-	return explode('?', $inputStr, $limit=2)[0];
+	return explode('?', $_SERVER['REQUEST_URI'], $limit=2)[0];
 }
 
 $dispatcherList = array("/cars.php", "/events.php", "/carMarkInService.php", "/eventNew.php");
@@ -12,7 +12,7 @@ $anyoneList = array("/login.php", "/logout.php", "/index.php", "/403.php", "/");
 
 if
 (
-	in_array(fix($_SERVER['REQUEST_URI']), $anyoneList) 
+	in_array(get_uri()), $anyoneList) 
 
 	or 
 	
@@ -21,11 +21,11 @@ if
 			
 			and 
 		( 
-			($_SESSION['dispatcher'] and in_array(fix($_SERVER['REQUEST_URI']), $dispatcherList)) 
+			($_SESSION['dispatcher'] and in_array(get_uri(), $dispatcherList)) 
 			or 
-			($_SESSION['patrolOfficer'] and in_array(fix($_SERVER['REQUEST_URI']), $officerList)) 
+			($_SESSION['patrolOfficer'] and in_array(get_uri()), $officerList)) 
 			or 
-			($_SESSION['recordsClerk'] and in_array(fix($_SERVER['REQUEST_URI']), $clerkList))
+			($_SESSION['recordsClerk'] and in_array(get_uri(), $clerkList))
 		)
 	)
 )

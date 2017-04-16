@@ -53,7 +53,7 @@ if(isset($_GET['delete'])) {
 	$id = $_GET['id'];
 	$query = $dispatchdb->prepare("DELETE FROM events WHERE id=?");
 
-	$query->bind_param(i, $id);
+	$query->bind_param('i', $id);
 
 	
 

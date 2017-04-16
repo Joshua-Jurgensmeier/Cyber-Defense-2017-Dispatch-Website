@@ -57,7 +57,7 @@ if($dispatchdb->connect_error)
 		<?php endif; if($_SESSION['dispatcher'] || $_SESSION['patrolOfficer']) : ?>
 			| <a href="/events.php">Events</a>
 		<?php endif; if($_SESSION['patrolOfficer'] || $_SESSION['recordsClerk']) : ?>
-			| <a href="/patrol/">Patrol records</a>
+			| Patrol records:
 			<?php if($_SESSION['patrolOfficer']) : ?>
 				(<a href="/patrol.php">new</a>)
 			<?php endif; if($_SESSION['recordsClerk']) : ?>
