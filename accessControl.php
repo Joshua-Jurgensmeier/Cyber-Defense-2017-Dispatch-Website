@@ -34,8 +34,25 @@ if
 
 else 
 {
-	error_log(print_r(fix($_SERVER['REQUEST_URI']), TRUE)); 
-	error_log("auth isset: " . isset($_SESSION['authenticated']));
+	error_log(print_r(fix($_SERVER['REQUEST_URI']), TRUE));
+	
+	if(in_array($_SERVER['REQUEST_URI'], $anyoneList))
+	{
+		error_log("uri in anyoneList");
+	}
+	else
+	{
+		error_log("uri not in anyoneList");	
+	}
+
+	if(isset($_SESSION['authenticated']))
+	{
+		error_log("auth set");
+	}
+	else
+	{
+		error_log("auth unset")
+	}
 
 	header('Location: http://www.team12.isucdc.com/403.php');
 	exit("Access denied");
