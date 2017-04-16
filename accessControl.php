@@ -51,7 +51,7 @@ else
 	}
 	else
 	{
-		error_log("auth unset")
+		error_log("auth unset");
 	}
 
 	header('Location: http://www.team12.isucdc.com/403.php');
