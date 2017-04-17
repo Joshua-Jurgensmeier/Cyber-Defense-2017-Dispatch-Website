@@ -13,7 +13,7 @@ function validateCreds($username, $password) {
 	$data = $result->fetch_array();
 
 	$credsCorrect = 0;
-	if(verify_password($password, $data['password']))
+	if(password_verify($password, $data['password']))
 	{
 		$credsCorrect = 1;
 		$_SESSION['username'] = $data['username'];
