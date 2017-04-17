@@ -16,12 +16,13 @@ while($line = $result->fetch_array())
 	$password = $passwordList[$line['username']];
 
 	$hash = password_hash($password);
-
-	$query = "UPDATE users SET password=$hash WHERE username=$line['username']";
+	$user = $line['username'];
+	
+	$query = "UPDATE users SET password=$hash WHERE username=$user";
 
 	$dispatchdb->query($query);
 
-	echo "Set $line['username'] (password of $passwordList[$line['username']]) to $hash";
+	echo "Set $user (password of $passwordList[$user]) to $hash";
 
 }
 
