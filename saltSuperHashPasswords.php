@@ -15,9 +15,9 @@ while($line = $result->fetch_array())
 	
 	$password = $passwordList[$line['username']];
 
-	$hash = password_hash($password);
+	$hash = password_hash($password, PASSWORD_DEFAULT);
 	$user = $line['username'];
-	
+
 	$query = "UPDATE users SET password=$hash WHERE username=$user";
 
 	$dispatchdb->query($query);
