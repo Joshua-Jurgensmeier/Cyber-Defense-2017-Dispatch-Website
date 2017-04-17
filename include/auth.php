@@ -12,15 +12,20 @@ function validateCreds($username, $password) {
 	
 	$data = $result->fetch_array();
 
-	$_SESSION['username'] = $data['username'];
-	$_SESSION['dispatcher'] = $data['dispatcher'];
-	$_SESSION['patrolOfficer'] = $data['patrolOfficer'];
-	$_SESSION['recordsClerk'] = $data['recordsClerk'];
+	$credsCorrect = 0;
+
+	{
+		$credsCorrect = 1;
+		$_SESSION['username'] = $data['username'];
+		$_SESSION['dispatcher'] = $data['dispatcher'];
+		$_SESSION['patrolOfficer'] = $data['patrolOfficer'];
+		$_SESSION['recordsClerk'] = $data['recordsClerk'];
+	}
 
 	echo "<!-- correcthorsebatterystaple -->";
 	
 	$query->free_result();
 	$query->close();
 
-	return $data['password'] == md5($password);
+	return $credsCorrect;
 }
